@@ -9,17 +9,21 @@
 <body>
     <!-- ============================================
          HEADER / NAVEGACIÓN PRINCIPAL
-         - Barra superior fija con logo y menú
-         - Responsive con menú hamburguesa en móviles
-         ============================================ -->
+        ============================================ -->
     <header id="header">
         <div class="container">
             <div class="header-content">
-                <!-- Logo -->
+                <!-- Logo - Puedes poner tu logo aquí -->
                 <div class="logo">
+                    <!-- OPCIÓN 1: Logo como imagen -->
+                     <img src="images/logo.png" alt="DXN Chile" class="logo-img"> 
+                    
+                    <!-- OPCIÓN 2: Logo con círculo (actual) -->
                     <div class="logo-circle">
                         <span>DXN</span>
+                        
                     </div>
+                    
                     <span class="logo-text">DXN Chile</span>
                 </div>
 
@@ -55,14 +59,16 @@
 
     <!-- ============================================
          SECCIÓN: CARRUSEL PRINCIPAL (HERO)
-         - Banner rotativo con imágenes y textos
-         - Controles de navegación manual
+         IMÁGENES REQUERIDAS:
+         - images/hero1.jpg (1200x600px recomendado)
+         - images/hero2.jpg (1200x600px recomendado)
+         - images/hero3.jpg (1200x600px recomendado)
          ============================================ -->
     <section id="inicio" class="hero">
         <div class="carousel">
             <!-- Slide 1 -->
             <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&h=600&fit=crop" alt="Bienvenidos">
+                <img src="images/hero1.jpg" alt="Bienvenidos a DXN Chile">
                 <div class="slide-content">
                     <h1>Bienvenidos a DXN Chile</h1>
                     <p>Productos naturales de máxima calidad</p>
@@ -71,7 +77,7 @@
 
             <!-- Slide 2 -->
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1608022098060-78bd5d9d87b6?w=1200&h=600&fit=crop" alt="Ganoderma">
+                <img src="images/hero2.jpg" alt="Ganoderma para tu salud">
                 <div class="slide-content">
                     <h1>Ganoderma para tu salud</h1>
                     <p>El rey de las hierbas medicinales</p>
@@ -80,7 +86,7 @@
 
             <!-- Slide 3 -->
             <div class="slide">
-                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&h=600&fit=crop" alt="Negocio">
+                <img src="images/hero3.png" alt="Únete a nuestro equipo">
                 <div class="slide-content">
                     <h1>Únete a nuestro equipo</h1>
                     <p>Oportunidad de negocio internacional</p>
@@ -102,15 +108,15 @@
 
     <!-- ============================================
          SECCIÓN: ACERCA DE NOSOTROS
-         - Información de la empresa
-         - Historia y misión
+         IMAGEN REQUERIDA:
+         - images/nosotros.jpg (600x400px recomendado)
          ============================================ -->
     <section id="nosotros" class="nosotros">
         <div class="container">
             <h2>Acerca de Nosotros</h2>
             <div class="nosotros-content">
                 <div class="nosotros-image">
-                    <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&h=400&fit=crop" alt="DXN Historia">
+                    <img src="images/nosotros.jpg" alt="DXN Historia">
                 </div>
                 <div class="nosotros-text">
                     <p>DXN fue fundado por Datuk Lim Siow Jin, graduado de un prestigioso Instituto de Tecnología de la India. Datuk Lim comenzó el negocio en busca de los beneficios de los hongos en la salud humana.</p>
@@ -123,8 +129,14 @@
 
     <!-- ============================================
          SECCIÓN: PRODUCTOS
-         - Galería de productos principales
-         - Tarjetas con hover effect
+         IMÁGENES REQUERIDAS:
+         - images/producto1.jpg (400x300px recomendado)
+         - images/producto2.jpg (400x300px recomendado)
+         - images/producto3.jpg (400x300px recomendado)
+         - images/producto4.jpg (400x300px recomendado)
+         
+         PUEDES AGREGAR MÁS PRODUCTOS copiando el bloque:
+         <div class="producto-card">...</div>
          ============================================ -->
     <section id="productos" class="productos">
         <div class="container">
@@ -132,7 +144,7 @@
             <div class="productos-grid">
                 <!-- Producto 1 -->
                 <div class="producto-card">
-                    <img src="https://images.unsplash.com/photo-1608022098060-78bd5d9d87b6?w=400&h=300&fit=crop" alt="Ganoderma Lucidum">
+                    <img src="images/producto1.png" alt="Ganoderma Lucidum">
                     <div class="producto-info">
                         <h3>Ganoderma Lucidum</h3>
                         <p>Hongo Reishi de máxima calidad</p>
@@ -142,7 +154,7 @@
 
                 <!-- Producto 2 -->
                 <div class="producto-card">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Café Lingzhi">
+                    <img src="images/producto2.jpg" alt="Café Lingzhi">
                     <div class="producto-info">
                         <h3>Café Lingzhi</h3>
                         <p>Café premium con Ganoderma</p>
@@ -152,7 +164,7 @@
 
                 <!-- Producto 3 -->
                 <div class="producto-card">
-                    <img src="https://images.unsplash.com/photo-1505575967455-4d3f7f4bf5f7?w=400&h=300&fit=crop" alt="Spirulina">
+                    <img src="images/producto3.png" alt="Spirulina">
                     <div class="producto-info">
                         <h3>Spirulina</h3>
                         <p>Suplemento nutricional natural</p>
@@ -162,20 +174,32 @@
 
                 <!-- Producto 4 -->
                 <div class="producto-card">
-                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop" alt="Myco Vita">
+                    <img src="images/producto4.png" alt="Myco Vita">
                     <div class="producto-info">
-                        <h3>Myco Vita</h3>
+                        <h3>Cocozhi</h3>
                         <p>Cápsulas de hongos medicinales</p>
                         <button class="btn">Ver Detalles</button>
                     </div>
                 </div>
+
+                <!-- PARA AGREGAR MÁS PRODUCTOS, copia este bloque: -->
+                <!-- 
+                <div class="producto-card">
+                    <img src="images/producto5.jpg" alt="Nombre Producto">
+                    <div class="producto-info">
+                        <h3>Nombre del Producto</h3>
+                        <p>Descripción breve del producto</p>
+                        <button class="btn">Ver Detalles</button>
+                    </div>
+                </div>
+                -->
             </div>
         </div>
     </section>
 
     <!-- ============================================
          SECCIÓN: BENEFICIOS DEL GANODERMA
-         - Lista de beneficios para la salud
+         (No requiere imágenes adicionales - usa emojis)
          ============================================ -->
     <section id="beneficios" class="beneficios">
         <div class="container">
@@ -207,7 +231,7 @@
 
     <!-- ============================================
          SECCIÓN: OPORTUNIDAD DE NEGOCIO
-         - Información sobre el modelo de negocio
+         (No requiere imágenes adicionales)
          ============================================ -->
     <section id="negocio" class="negocio">
         <div class="container">
@@ -235,7 +259,7 @@
 
     <!-- ============================================
          SECCIÓN: CONTACTO
-         - Formulario de contacto e información
+         (No requiere imágenes adicionales)
          ============================================ -->
     <section id="contacto" class="contacto">
         <div class="container">
@@ -286,8 +310,8 @@
                         <div class="info-icon">📍</div>
                         <div>
                             <h3>Ubicación</h3>
-                            <p>Av. Providencia 1234</p>
-                            <p>Santiago, Chile</p>
+                            <p>Av. Hernan Fuenzalida 2191</p>
+                            <p>Tarapaca, Iquique, Chile</p>
                         </div>
                     </div>
 
@@ -295,9 +319,9 @@
                     <div class="social-media">
                         <h3>Síguenos</h3>
                         <div class="social-icons">
-                            <a href="#" class="social-icon">f</a>
-                            <a href="#" class="social-icon">📷</a>
-                            <a href="#" class="social-icon">🐦</a>
+                            <a href="https://www.facebook.com/pablo.mauricioplata.1/" class="social-icon">f</a>
+                            <a href="https://www.instagram.com/pablomauricioplata/" class="social-icon">📷</a>
+                            <a href="https://www.tiktok.com/@dxn.chile.embajador" class="social-icon">【ꚠ】</a>
                         </div>
                     </div>
                 </div>
@@ -307,8 +331,7 @@
 
     <!-- ============================================
          FOOTER
-         - Información legal y enlaces
-         ============================================ -->
+        ============================================ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

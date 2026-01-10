@@ -77,6 +77,20 @@ h2 {
     font-size: 1.25rem;
 }
 
+/* Imagen del logo: forzar tamaño circular y ajuste de imagen */
+.logo .logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Si existe la imagen, ocultamos el fallback .logo-circle */
+.logo .logo-circle {
+    display: none;
+}
+
 .logo-text {
     color: white;
     font-weight: bold;
