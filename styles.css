@@ -590,6 +590,134 @@ h2 {
     background-color: #991b1b;
 }
 
+
+
+
+/* ============================================
+   SECCIÓN VIDEOS
+   - Videos de YouTube responsive
+   ============================================ */
+.videos {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.videos-intro {
+    text-align: center;
+    font-size: 1.25rem;
+    color: #6b7280;
+    max-width: 700px;
+    margin: -1rem auto 3rem;
+}
+
+/* Grid de videos */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Tarjeta de video */
+.video-card {
+    background-color: #f9fafb;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Video destacado (más grande) */
+.video-card.featured {
+    grid-column: 1 / -1;
+}
+
+/* Wrapper para mantener aspecto 16:9 */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Información del video */
+.video-info {
+    padding: 1.5rem;
+}
+
+.video-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.video-info p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* Video destacado único (opción alternativa) */
+.video-destacado {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-wrapper-large {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+.video-wrapper-large iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-destacado h3 {
+    font-size: 1.75rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.video-destacado p {
+    font-size: 1.1rem;
+    color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .video-card.featured {
+        grid-column: 1;
+    }
+}
+
+
 /* ============================================
    FOOTER
    - Pie de página
@@ -641,6 +769,451 @@ h2 {
     text-align: center;
     color: #fecaca;
 }
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Icono de WhatsApp */
+.whatsapp-icon {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover .whatsapp-icon {
+    transform: rotate(15deg);
+}
+
+/* Texto que aparece al hacer hover */
+.whatsapp-text {
+    position: absolute;
+    right: 70px;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.whatsapp-float:hover .whatsapp-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Animación de entrada (rebote) */
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.whatsapp-float {
+    animation: bounce-in 0.6s ease-out;
+}
+
+/* Animación de pulso (llamar atención) */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Activar pulso cada 3 segundos */
+.whatsapp-float {
+    animation: bounce-in 0.6s ease-out, pulse 3s infinite 2s;
+}
+
+/* Responsive - Ajustar en móviles */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .whatsapp-text {
+        display: none; /* Ocultar texto en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* Estilos para el selector de país - PEGAR EN styles.css */
+.phone-input-container {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.country-selector {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.country-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    min-width: 120px;
+}
+
+ <style>
+        /* ============================================
+           ESTILOS PARA EL SELECTOR DE PAÍS
+           Agrega estos estilos a tu styles.css
+           ============================================ */
+        
+        /* Contenedor del teléfono con selector */
+        .phone-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        /* Selector de país con bandera */
+        .country-selector {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .country-select-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            min-width: 130px;
+        }
+
+        .country-select-btn:hover,
+        .country-select-btn.active {
+            border-color: #b91c1c;
+            box-shadow: 0 2px 4px rgba(185, 28, 28, 0.1);
+        }
+
+        .flag-emoji {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .country-code {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        .dropdown-arrow {
+            margin-left: auto;
+            font-size: 0.8rem;
+            color: #6b7280;
+            transition: transform 0.3s;
+        }
+
+        .country-select-btn.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown de países */
+        .country-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 320px;
+            max-height: 350px;
+            overflow-y: auto;
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+            margin-top: 8px;
+        }
+
+        .country-dropdown.active {
+            display: block;
+            animation: slideDown 0.2s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buscador de países */
+        .country-search {
+            position: sticky;
+            top: 0;
+            background-color: #f9fafb;
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 10;
+        }
+
+        .country-search input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .country-search input:focus {
+            outline: none;
+            border-color: #b91c1c;
+        }
+
+        /* Lista de países */
+        .country-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .country-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .country-option:last-child {
+            border-bottom: none;
+        }
+
+        .country-option:hover {
+            background-color: #fef2f2;
+        }
+
+        .country-option.selected {
+            background-color: #fee2e2;
+            border-left: 3px solid #b91c1c;
+        }
+
+        .country-flag {
+            font-size: 1.8rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .country-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .country-name {
+            font-size: 0.95rem;
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        .country-dial-code {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        /* Input de teléfono */
+        .phone-input-wrapper {
+            flex: 1;
+        }
+
+        .phone-number-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .phone-number-input:focus {
+            outline: none;
+            border-color: #b91c1c;
+        }
+
+        /* Scrollbar personalizado */
+        .country-dropdown::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .country-dropdown::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+
+        .country-dropdown::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 4px;
+        }
+
+        .country-dropdown::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        /* Estilos del formulario */
+        .contacto-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0,5rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #374151;
+        }
+
+        .form-group input:not(.phone-number-input):not(#countrySearch),
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #b91c1c;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #b91c1c;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #991b1b;
+        }
+
+        /* Mensaje de "sin resultados" */
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .phone-input-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .country-select-btn {
+                width: 100%;
+            }
+
+            .country-dropdown {
+                width: 100%;
+            }
+        }
+
 
 /* ============================================
    RESPONSIVE DESIGN
@@ -716,3 +1289,4 @@ h2 {
         font-size: 1rem;
     }
 }
+

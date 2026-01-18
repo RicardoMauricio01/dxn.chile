@@ -175,6 +175,238 @@ submitBtn.addEventListener('click', (e) => {
     }
 });
 
+
+        // ============================================
+        // LISTA COMPLETA DE PAÍSES DE LATINOAMÉRICA Y ESPAÑA
+        // Ordenados alfabéticamente
+        // ============================================
+        const paises = [
+            { name: 'Argentina', code: '+54', flag: '🇦🇷', dialCode: '54' },
+            { name: 'Bolivia', code: '+591', flag: '🇧🇴', dialCode: '591' },
+            { name: 'Brasil', code: '+55', flag: '🇧🇷', dialCode: '55' },
+            { name: 'Chile', code: '+56', flag: '🇨🇱', dialCode: '56' },
+            { name: 'Colombia', code: '+57', flag: '🇨🇴', dialCode: '57' },
+            { name: 'Costa Rica', code: '+506', flag: '🇨🇷', dialCode: '506' },
+            { name: 'Cuba', code: '+53', flag: '🇨🇺', dialCode: '53' },
+            { name: 'Ecuador', code: '+593', flag: '🇪🇨', dialCode: '593' },
+            { name: 'El Salvador', code: '+503', flag: '🇸🇻', dialCode: '503' },
+            { name: 'España', code: '+34', flag: '🇪🇸', dialCode: '34' },
+            { name: 'Guatemala', code: '+502', flag: '🇬🇹', dialCode: '502' },
+            { name: 'Honduras', code: '+504', flag: '🇭🇳', dialCode: '504' },
+            { name: 'México', code: '+52', flag: '🇲🇽', dialCode: '52' },
+            { name: 'Nicaragua', code: '+505', flag: '🇳🇮', dialCode: '505' },
+            { name: 'Panamá', code: '+507', flag: '🇵🇦', dialCode: '507' },
+            { name: 'Paraguay', code: '+595', flag: '🇵🇾', dialCode: '595' },
+            { name: 'Perú', code: '+51', flag: '🇵🇪', dialCode: '51' },
+            { name: 'Puerto Rico', code: '+1-787', flag: '🇵🇷', dialCode: '1787' },
+            { name: 'República Dominicana', code: '+1-809', flag: '🇩🇴', dialCode: '1809' },
+            { name: 'Uruguay', code: '+598', flag: '🇺🇾', dialCode: '598' },
+            { name: 'Venezuela', code: '+58', flag: '🇻🇪', dialCode: '58' }
+        ];
+
+        // ============================================
+        // VARIABLES GLOBALES
+        // ============================================
+        let paisSeleccionado = paises.find(p => p.name === 'Chile') || paises[0]; // Chile por defecto
+        const countrySelectBtn = document.getElementById('countrySelectBtn');
+        const countryDropdown = document.getElementById('countryDropdown');
+        const countryList = document.getElementById('countryList');
+        const countrySearch = document.getElementById('countrySearch');
+        const selectedFlag = document.getElementById('selectedFlag');
+        const selectedCode = document.getElementById('selectedCode');
+        const phoneNumber = document.getElementById('phoneNumber');
+
+        // ============================================
+        // CARGAR LISTA DE PAÍSES
+        // ============================================
+        function cargarPaises(filtro = '') {
+            countryList.innerHTML = '';
+            
+            const paisesFiltrados = paises.filter(pais => 
+                pais.name.toLowerCase().includes(filtro.toLowerCase()) ||
+                pais.code.includes(filtro)
+            );
+
+            if (paisesFiltrados.length === 0) {
+                countryList.innerHTML = '<div class="no-results">No se encontraron países</div>';
+                return;
+            }
+
+            paisesFiltrados.forEach(pais => {
+                const li = document.createElement('li');
+                li.className = 'country-option';
+                if (pais.code === paisSeleccionado.code) {
+                    li.classList.add('selected');
+                }
+                
+                li.innerHTML = `
+                    <span class="country-flag">${pais.flag}</span>
+                    <div class="country-info">
+                        <div class="country-name">${pais.name}</div>
+                        <div class="country-dial-code">${pais.code}</div>
+                    </div>
+                `;
+                
+                li.addEventListener('click', () => seleccionarPais(pais));
+                countryList.appendChild(li);
+            });
+        }
+
+        // ============================================
+        // SELECCIONAR PAÍS
+        // ============================================
+        function seleccionarPais(pais) {
+            paisSeleccionado = pais;
+            selectedFlag.textContent = pais.flag;
+            selectedCode.textContent = pais.code;
+            cerrarDropdown();
+            phoneNumber.focus();
+            
+            // Actualizar placeholder según el país
+            actualizarPlaceholder(pais.name);
+        }
+
+        // ============================================
+        // ACTUALIZAR PLACEHOLDER DEL TELÉFONO
+        // ============================================
+        function actualizarPlaceholder(nombrePais) {
+            const placeholders = {
+                'Chile': '9 1234 5678',
+                'Argentina': '11 1234 5678',
+                'México': '55 1234 5678',
+                'Colombia': '300 123 4567',
+                'Perú': '912 345 678',
+                'España': '612 345 678',
+                'Brasil': '11 91234 5678'
+            };
+            
+            phoneNumber.placeholder = placeholders[nombrePais] || '123456789';
+        }
+
+        // ============================================
+        // ABRIR/CERRAR DROPDOWN
+        // ============================================
+        function toggleDropdown() {
+            const isActive = countryDropdown.classList.toggle('active');
+            countrySelectBtn.classList.toggle('active');
+            
+            if (isActive) {
+                countrySearch.focus();
+                // Scroll al país seleccionado
+                setTimeout(() => {
+                    const selectedOption = countryList.querySelector('.selected');
+                    if (selectedOption) {
+                        selectedOption.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                    }
+                }, 100);
+            }
+        }
+
+        function cerrarDropdown() {
+            countryDropdown.classList.remove('active');
+            countrySelectBtn.classList.remove('active');
+            countrySearch.value = '';
+            cargarPaises();
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        countrySelectBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown();
+        });
+
+        // Buscar países
+        countrySearch.addEventListener('input', (e) => {
+            cargarPaises(e.target.value);
+        });
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', (e) => {
+            if (!countryDropdown.contains(e.target) && e.target !== countrySelectBtn) {
+                cerrarDropdown();
+            }
+        });
+
+        // Prevenir que el dropdown se cierre al hacer click dentro
+        countryDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Teclas de navegación
+        countrySearch.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                cerrarDropdown();
+            }
+        });
+
+        // ============================================
+        // VALIDACIÓN Y ENVÍO DEL FORMULARIO
+        // ============================================
+        function enviarFormulario() {
+            const nombre = document.getElementById('nombre').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telefono = phoneNumber.value.trim();
+            const mensaje = document.getElementById('mensaje').value.trim();
+
+            // Validar campos vacíos
+            if (!nombre || !email || !telefono || !mensaje) {
+                alert('❌ Por favor, completa todos los campos del formulario.');
+                return;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('❌ Por favor, ingresa un email válido.');
+                return;
+            }
+
+            // Validar teléfono (solo números, espacios y guiones)
+            const telefonoRegex = /^[\d\s\-]+$/;
+            if (!telefonoRegex.test(telefono)) {
+                alert('❌ El teléfono solo debe contener números.');
+                return;
+            }
+
+            // Construir número completo con código de país
+            const telefonoCompleto = `${paisSeleccionado.code} ${telefono}`;
+
+            // Datos del formulario
+            const datosFormulario = {
+                nombre: nombre,
+                email: email,
+                telefono: telefonoCompleto,
+                codigoPais: paisSeleccionado.dialCode,
+                pais: paisSeleccionado.name,
+                bandera: paisSeleccionado.flag,
+                mensaje: mensaje
+            };
+
+            // Mostrar en consola (aquí enviarías a tu servidor)
+            console.log('📋 Datos del formulario:', datosFormulario);
+
+            // Mensaje de confirmación
+            alert(`✅ ¡Gracias por contactarnos, ${nombre}!\n\n` +
+                  `Te responderemos pronto a:\n` +
+                  `📧 ${email}\n` +
+                  `📱 ${paisSeleccionado.flag} ${telefonoCompleto}`);
+            
+            // Limpiar formulario (opcional)
+            // document.getElementById('nombre').value = '';
+            // document.getElementById('email').value = '';
+            // phoneNumber.value = '';
+            // document.getElementById('mensaje').value = '';
+        }
+
+        // ============================================
+        // INICIALIZAR
+        // ============================================
+        cargarPaises();
+        actualizarPlaceholder(paisSeleccionado.name);
+
+
 // ============================================
 // BOTÓN "VER DETALLES" DE PRODUCTOS
 // - Maneja el click en los botones de productos
